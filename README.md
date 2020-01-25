@@ -1,2 +1,2 @@
 # institutional_data
-a repo to hold some miscellaneous code for institutional scrape, parse and ingestion
+a repo to hold some miscellaneous code for institutional scrape, parse and ingestion. Build not passing. Further work required! Some code feeds into NHSSpend, and some into a forthcoming CH project (with @aaronreeves). Accounts data parser based on work from @drkane. get_all_ch_data.py requires CH FTP Access. Also requires subdir pathing set up for caching. Watch this space for more in the future!
