@@ -14,13 +14,27 @@ import zipfile
 from datetime import datetime
 from elasticsearch_dsl import (Document, Keyword, Text, Index)
 from elasticsearch_dsl.connections import connections
-from reconciliation import normalizer
 from charity_parser import ImportCC
 
 file_path = os.path.dirname(os.path.realpath(__file__))
 project_path = os.path.normpath(os.path.join(file_path))
 data_path = os.path.join(project_path, 'data')
-connections.create_connection(hosts=['localhost'])
+connections.create_connection(hosts=['localhost
+
+                                     
+def normalizer(name, norm_dict):
+    ''' normalise entity names with manually curated dict'''
+    if isinstance(name, str):
+        name = name.upper()
+        for key, value in norm_dict.items():
+            name = name.replace(key, value)
+        name = name.replace(r"\(.*\)", "")
+        name = "".join(l for l in name if l not in string.punctuation)
+        name = ' '.join(name.split())
+        name = name.strip()
+        return name
+    else:
+        return None
 
 
 def get_ch_data(url, path):
